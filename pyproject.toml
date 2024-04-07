@@ -15,6 +15,9 @@ asgi-correlation-id = "^4.3.1"
 orjson = "^3.10.0"
 uvicorn = "^0.29.0"
 dependency-injector = "^4.41.0"
+sqlalchemy = "2.0.29"
+alembic = "^1.13.1"
+psycopg2-binary = "^2.9.9"
 
 [tool.poetry.group]
 dev.optional = true
@@ -32,7 +35,14 @@ pytest = "^8.1.1"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.ruff]
+line-length = 120
+
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402", "F401"]
 "tests/**/*.py" = ["S101"]
 "**/cli/**/*.py" = ["T201"]
+
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "normal"
