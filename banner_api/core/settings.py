@@ -21,6 +21,7 @@ class AppSettings(BaseSettings):
 
     title: str = Field(init=False)
     version: str = Field(init=False)
+    debug: bool = Field(init=False)
 
 
 class LoggingConfig(BaseSettings):
