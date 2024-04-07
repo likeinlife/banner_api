@@ -18,6 +18,7 @@ dependency-injector = "^4.41.0"
 sqlalchemy = "2.0.29"
 alembic = "^1.13.1"
 psycopg2-binary = "^2.9.9"
+gunicorn = "^21.2.0"
 
 [tool.poetry.group]
 dev.optional = true
@@ -37,6 +38,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 120
+exclude = ["migrations"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402", "F401"]

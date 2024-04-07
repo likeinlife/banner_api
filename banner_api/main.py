@@ -1,12 +1,11 @@
 from contextlib import asynccontextmanager
 
+from api import register_api_routes
+from container import Container
+from core import settings
 from fastapi import FastAPI, Response, status
 from fastapi.responses import ORJSONResponse
-
-from .api import register_api_routes
-from .container import Container
-from .core import settings
-from .middlewares import register_middlewares
+from middlewares import register_middlewares
 
 
 @asynccontextmanager
