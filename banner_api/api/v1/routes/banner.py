@@ -8,10 +8,16 @@ from dependency_injector.wiring import Provide, inject
 from fastapi import APIRouter, Depends, Path, Response, status
 from uow import UnitOfWork
 
+from .utils import get_error_responses
+
 router = APIRouter(prefix="/banner", dependencies=[Depends(require_admin)])
 
 
-@router.get("/", summary="Получение всех баннеров с фильтрацией по фиче и/или тегу")
+@router.get(
+    "/",
+    summary="Получение всех баннеров с фильтрацией по фиче и/или тегу",
+    responses=get_error_responses(),
+)
 @inject
 async def banner_list(
     request: tp.Annotated[schemas.GetBannerListRequest, Depends(schemas.GetBannerListRequest)],
@@ -29,7 +35,11 @@ async def banner_list(
     return [schemas.BannerSchema(**banner.model_dump()) for banner in dto]
 
 
-@router.post("/", summary="Создание нового баннера")
+@router.post(
+    "/",
+    summary="Создание нового баннера",
+    responses=get_error_responses(),
+)
 @inject
 async def create(
     request: schemas.CreateBannerRequest,
@@ -48,7 +58,11 @@ async def create(
     return schemas.CreateBannerResponse(id_=dto.id_)
 
 
-@router.patch("/{id}/", summary="Обновление содержимого баннера")
+@router.patch(
+    "/{id}/",
+    summary="Обновление содержимого баннера",
+    responses=get_error_responses(),
+)
 @inject
 async def update(
     request: schemas.UpdateBannerRequest,
@@ -69,7 +83,11 @@ async def update(
     return Response(status_code=status.HTTP_200_OK)
 
 
-@router.delete("/{id}/", summary="Удаление баннера по идентификатору")
+@router.delete(
+    "/{id}/",
+    summary="Удаление баннера по идентификатору",
+    responses=get_error_responses(),
+)
 @inject
 async def delete(
     id_: tp.Annotated[int, Path(alias="id")],
