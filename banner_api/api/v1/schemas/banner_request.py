@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from .banner_schema import CreateBannerSchema, UpdateBannerSchema
 
@@ -20,7 +20,3 @@ class CreateBannerRequest(CreateBannerSchema):
 
 class UpdateBannerRequest(UpdateBannerSchema):
     ...
-
-
-class DeleteBannerRequest(BaseModel):
-    id_: int = Field(serialization_alias="id")
