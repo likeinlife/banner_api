@@ -128,12 +128,14 @@ class BannerRepository:
         scalar = (await self.session.execute(query)).scalar_one_or_none()
         if not scalar:
             return None
+
         scalar.is_active = dto.is_active
         scalar.text = dto.content.text
         scalar.title = dto.content.title
         scalar.url = dto.content.url
         scalar.tag_ids = dto.tag_ids
         await self.session.flush()
+        await self.session.refresh(scalar)
         self._logger.debug("Banner updated", banner_id=id_)
 
         return BannerDTO(
