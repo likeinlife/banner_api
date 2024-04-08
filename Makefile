@@ -1,11 +1,14 @@
 dc = docker compose
 dcdev = $(dc) -f docker-compose-dev.yaml
 
-up-dev:
+up:
 	$(dcdev) up --build -d
 
-down-dev:
+downv:
 	$(dcdev) down -v
+
+down:
+	$(dcdev) down
 
 freeze:
 	poetry export -o requirements.txt --without-hashes
@@ -13,8 +16,8 @@ freeze:
 local-revision:
 	alembic revision -m "$(name)" --autogenerate
 
-dev-revision:
+revision:
 	$(dcdev) exec -it banner_api alembic revision -m "$(name)" --autogenerate
 
-dev-upgrade:
+upgrade:
 	$(dcdev) exec -it banner_api alembic upgrade head

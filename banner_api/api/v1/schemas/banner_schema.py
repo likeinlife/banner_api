@@ -10,7 +10,7 @@ class BannerContentSchema(BaseModel):
 
 
 class BannerSchema(BaseModel):
-    id_: str = Field(serialization_alias="banner_id")
+    id_: int = Field(serialization_alias="banner_id")
     tag_ids: list[int]
     feature_id: int
     content: BannerContentSchema
@@ -20,14 +20,14 @@ class BannerSchema(BaseModel):
 
 
 class CreateBannerSchema(BaseModel):
-    tag_ids: list[int]
+    tag_ids: set[int]
     feature_id: int
     content: BannerContentSchema
     is_active: bool
 
 
 class UpdateBannerSchema(BaseModel):
-    tag_ids: list[int]
+    tag_ids: set[int]
     feature_id: int
     content: BannerContentSchema
     is_active: bool

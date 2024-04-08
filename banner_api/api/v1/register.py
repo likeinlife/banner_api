@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from . import banner, user_banner
+from .routes import banner, user_banner
 
 v1_router = APIRouter(prefix="/v1", tags=["v1"])
 

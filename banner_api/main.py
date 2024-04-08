@@ -11,6 +11,7 @@ from middlewares import register_middlewares
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     container = Container()
+    container.wire(packages=["api"])
     container.init_resources()
     yield
     container.shutdown_resources()

@@ -1,1 +1,1 @@
-from .auth import Role, role_getter
+from .auth import Role, require_admin, role_getter

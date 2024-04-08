@@ -6,7 +6,8 @@ services:
     env_file:
       - .env
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     volumes:
       - ./banner_api:/opt/app
 
@@ -20,6 +21,12 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
     volumes:
       - db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "postgres" ]
+      interval: 10s
+      timeout: 60s
+      retries: 5
+      start_period: 5s
 
 volumes:
   db:
