@@ -29,8 +29,8 @@ def upgrade() -> None:
     sa.Column('url', sa.String(length=128), nullable=False),
     sa.Column('tag_ids', sa.ARRAY(sa.Integer()), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False,server_default=sa.text('now()')),
+    sa.PrimaryKeyConstraint('id'),
     )
     # ### end Alembic commands ###
 

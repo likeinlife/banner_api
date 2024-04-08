@@ -12,8 +12,12 @@ class DBSettings(BaseSettings):
     database: str = Field(init=False)
 
     @property
-    def url(self) -> str:
+    def sync_url(self) -> str:
         return f"postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
+
+    @property
+    def async_url(self) -> str:
+        return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
 
 
 class AppSettings(BaseSettings):
