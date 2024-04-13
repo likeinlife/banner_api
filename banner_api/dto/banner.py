@@ -3,13 +3,17 @@ import datetime as dt
 from pydantic import BaseModel, Field
 
 
-class BannerContentDTO(BaseModel):
+class BaseDTO(BaseModel):
+    ...
+
+
+class BannerContentDTO(BaseDTO):
     title: str
     text: str
     url: str
 
 
-class BannerDTO(BaseModel):
+class BannerDTO(BaseDTO):
     id_: int = Field(serialization_alias="banner_id")
     tag_ids: set[int]
     feature_id: int
@@ -19,7 +23,7 @@ class BannerDTO(BaseModel):
     updated_at: dt.datetime
 
 
-class PutBannerDTO(BaseModel):
+class PutBannerDTO(BaseDTO):
     tag_ids: set[int]
     feature_id: int
     content: BannerContentDTO

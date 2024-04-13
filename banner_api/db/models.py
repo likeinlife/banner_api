@@ -1,5 +1,6 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
+from sqlalchemy.dialects.postgresql import ARRAY
 
 from .base import Base
 from .mixins import DateTimeMixin
@@ -13,4 +14,4 @@ class BannerORM(DateTimeMixin, Base):
     title: orm.Mapped[str] = orm.mapped_column(sa.String(65))
     text: orm.Mapped[str] = orm.mapped_column(sa.String(512))
     url: orm.Mapped[str] = orm.mapped_column(sa.String(128))
-    tag_ids: orm.Mapped[set[int]] = orm.mapped_column(sa.ARRAY(sa.Integer), default_factory=list)
+    tag_ids: orm.Mapped[set[int]] = orm.mapped_column(ARRAY(sa.Integer), default_factory=list)

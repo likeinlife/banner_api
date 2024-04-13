@@ -20,6 +20,14 @@ class DBSettings(BaseSettings):
         return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
 
 
+class CacheSettings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", env_prefix="REDIS_", extra="ignore")
+
+    host: str = Field(init=False)
+    port: int = Field(init=False)
+    expire_time_in_seconds: int = Field(default=60 * 5, init=False)
+
+
 class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_prefix="APP_", extra="ignore")
 
@@ -39,6 +47,7 @@ class Settings(BaseSettings):
     app: AppSettings = AppSettings()
     logging: LoggingConfig = LoggingConfig()
     db: DBSettings = DBSettings()
+    cache: CacheSettings = CacheSettings()
 
 
 settings = Settings()

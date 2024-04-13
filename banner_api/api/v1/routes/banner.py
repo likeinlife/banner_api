@@ -1,32 +1,32 @@
 import typing as tp
 
-from api.dependencies.auth import require_admin
+from api.dependencies import Role, require_admin, role_getter
 from api.v1 import schemas
-from api.v1.use_cases import BannerUseCases
-from container import Container
-from dependency_injector.wiring import Provide, inject
+from api.v1.use_cases import banner_usecase_factory
+from dependency_injector.wiring import inject
 from fastapi import APIRouter, Depends, Path, Response, status
-from uow import UnitOfWork
 
 from .utils import get_error_responses
 
 router = APIRouter(prefix="/banner", dependencies=[Depends(require_admin)])
 
+role_getter_dep = tp.Annotated[Role, Depends(role_getter("Токен администратора"))]
+
 
 @router.get(
     "/",
-    summary="Получение всех баннеров с фильтрацией по фиче и/или тегу",
+    summary="Получение всех баннеров с фильтрацией по фиче и/или тегу",  # noqa
     responses=get_error_responses(),
 )
 @inject
 async def banner_list(
     request: tp.Annotated[schemas.GetBannerListRequest, Depends(schemas.GetBannerListRequest)],
     paginator: tp.Annotated[schemas.Pagination, Depends(schemas.Pagination)],
-    uow: UnitOfWork = Depends(Provide[Container.uow]),
+    role: role_getter_dep,
 ) -> list[schemas.BannerSchema]:
-    use_cases = BannerUseCases(uow)
+    use_case = banner_usecase_factory(role)
 
-    dto = await use_cases.banner_list(
+    dto = await use_case.banner_list(
         tag_id=request.tag_id,
         feature_id=request.feature_id,
         offset=paginator.offset,
@@ -43,11 +43,11 @@ async def banner_list(
 @inject
 async def create(
     request: schemas.CreateBannerRequest,
-    uow: UnitOfWork = Depends(Provide[Container.uow]),
+    role: role_getter_dep,
 ) -> schemas.CreateBannerResponse:
-    use_cases = BannerUseCases(uow)
+    use_case = banner_usecase_factory(role)
 
-    dto = await use_cases.create(
+    dto = await use_case.create(
         tag_ids=request.tag_ids,
         feature_id=request.feature_id,
         title=request.content.title,
@@ -67,11 +67,11 @@ async def create(
 async def update(
     request: schemas.UpdateBannerRequest,
     id_: tp.Annotated[int, Path(alias="id")],
-    uow: UnitOfWork = Depends(Provide[Container.uow]),
+    role: role_getter_dep,
 ) -> Response:
-    use_cases = BannerUseCases(uow)
+    use_case = banner_usecase_factory(role)
 
-    await use_cases.update(
+    await use_case.update(
         id_=id_,
         tag_ids=request.tag_ids,
         feature_id=request.feature_id,
@@ -91,9 +91,9 @@ async def update(
 @inject
 async def delete(
     id_: tp.Annotated[int, Path(alias="id")],
-    uow: UnitOfWork = Depends(Provide[Container.uow]),
+    role: role_getter_dep,
 ) -> Response:
-    use_cases = BannerUseCases(uow)
+    use_case = banner_usecase_factory(role)
 
-    await use_cases.delete(id_=id_)
+    await use_case.delete(id_=id_)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
