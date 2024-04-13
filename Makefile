@@ -1,6 +1,9 @@
 dc = docker compose
 dcdev = $(dc) -f docker-compose-dev.yaml
 
+env:
+	cp sample.env .env
+
 up:
 	$(dcdev) up --build -d
 

@@ -9,7 +9,7 @@ from middlewares import register_middlewares
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI):  # noqa: ARG001
     container = Container()
     container.wire(packages=["api"])
     container.init_resources()
