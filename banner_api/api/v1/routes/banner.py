@@ -6,6 +6,7 @@ from api.v1.use_cases import banner_usecase_factory
 from dependency_injector.wiring import inject
 from fastapi import APIRouter, Depends, Path, Response, status
 
+from .utils import HttpErrorStatus as es
 from .utils import get_error_responses
 
 router = APIRouter(prefix="/banner", dependencies=[Depends(require_admin)])
@@ -16,7 +17,7 @@ role_getter_dep = tp.Annotated[Role, Depends(role_getter("Токен админ�
 @router.get(
     "/",
     summary="Получение всех баннеров с фильтрацией по фиче и/или тегу",  # noqa
-    responses=get_error_responses(),
+    responses=get_error_responses([es.FORBIDDEN, es.INTERNAL, es.UNAUTHORIZED]),
 )
 @inject
 async def banner_list(
@@ -38,7 +39,7 @@ async def banner_list(
 @router.post(
     "/",
     summary="Создание нового баннера",
-    responses=get_error_responses(),
+    responses=get_error_responses([es.FORBIDDEN, es.INTERNAL, es.UNAUTHORIZED]),
 )
 @inject
 async def create(
@@ -61,7 +62,7 @@ async def create(
 @router.patch(
     "/{id}/",
     summary="Обновление содержимого баннера",
-    responses=get_error_responses(),
+    responses=get_error_responses([es.FORBIDDEN, es.INTERNAL, es.UNAUTHORIZED, es.NOT_FOUND]),
 )
 @inject
 async def update(
@@ -86,7 +87,7 @@ async def update(
 @router.delete(
     "/{id}/",
     summary="Удаление баннера по идентификатору",
-    responses=get_error_responses(),
+    responses=get_error_responses([es.FORBIDDEN, es.INTERNAL, es.UNAUTHORIZED, es.NOT_FOUND]),
 )
 @inject
 async def delete(

@@ -6,6 +6,7 @@ from api.v1.use_cases import banner_usecase_factory
 from dependency_injector.wiring import inject
 from fastapi import APIRouter, Depends
 
+from .utils import HttpErrorStatus as es
 from .utils import get_error_responses
 
 router = APIRouter()
@@ -16,7 +17,7 @@ role_getter_dep = tp.Annotated[Role, Depends(role_getter("Токен польз�
 @router.get(
     "/user_banner/",
     summary="Получение баннера пользователя",
-    responses=get_error_responses(),
+    responses=get_error_responses([es.FORBIDDEN, es.INTERNAL, es.UNAUTHORIZED, es.NOT_FOUND]),
 )
 @inject
 async def get(
@@ -25,10 +26,9 @@ async def get(
 ) -> schemas.BannerContentSchema:
     use_case = banner_usecase_factory(role)
     dto = await use_case.user_banner(
-        role,
-        banner.tag_id,
-        banner.feature_id,
-        banner.use_last_revision,
+        tag_id=banner.tag_id,
+        feature_id=banner.feature_id,
+        use_last_revision=banner.use_last_revision,
     )
 
     return schemas.BannerContentSchema(**dto.model_dump())
