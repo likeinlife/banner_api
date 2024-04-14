@@ -1,4 +1,5 @@
 import datetime as dt
+import typing as tp
 import uuid
 from dataclasses import dataclass
 
@@ -14,7 +15,7 @@ class ReprSettings:
 
 class Base(orm.MappedAsDataclass, orm.DeclarativeBase):
     repr = ReprSettings()
-    type_annotation_map = {
+    type_annotation_map: tp.ClassVar = {
         dt.datetime: sa.DateTime(True),
         uuid.UUID: sa.UUID(True),
     }

@@ -21,12 +21,8 @@ async def _logger_middleware(request: Request, call_next):
         status_code=response.status_code,
     )
 
-    if (
-        status.HTTP_400_BAD_REQUEST
-        <= response.status_code
-        < status.HTTP_500_INTERNAL_SERVER_ERROR
-    ):
-        logger.warn("Client error")
+    if status.HTTP_400_BAD_REQUEST <= response.status_code < status.HTTP_500_INTERNAL_SERVER_ERROR:
+        logger.warning("Client error")
     elif response.status_code >= status.HTTP_500_INTERNAL_SERVER_ERROR:
         logger.error("Server error")
     else:

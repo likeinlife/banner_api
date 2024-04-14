@@ -10,8 +10,7 @@ class IBannerUseCases(abc.ABC):
         tag_id: int,
         feature_id: int,
         use_last_revision: bool,
-    ) -> BannerContentDTO:
-        ...
+    ) -> BannerContentDTO: ...
 
     @abc.abstractmethod
     async def banner_list(
@@ -20,8 +19,7 @@ class IBannerUseCases(abc.ABC):
         feature_id: int | None,
         offset: int,
         limit: int,
-    ) -> list[BannerDTO]:
-        ...
+    ) -> list[BannerDTO]: ...
 
     @abc.abstractmethod
     async def create(
@@ -32,8 +30,7 @@ class IBannerUseCases(abc.ABC):
         text: str,
         url: str,
         is_active: bool,
-    ) -> BannerDTO:
-        ...
+    ) -> BannerDTO: ...
 
     @abc.abstractmethod
     async def update(
@@ -45,12 +42,10 @@ class IBannerUseCases(abc.ABC):
         text: str,
         url: str,
         is_active: bool,
-    ) -> BannerDTO:
-        ...
+    ) -> BannerDTO: ...
 
     @abc.abstractmethod
     async def delete(
         self,
         id_: int,
-    ) -> BannerDTO:
-        ...
+    ) -> BannerDTO: ...

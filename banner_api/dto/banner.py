@@ -3,8 +3,7 @@ import datetime as dt
 from pydantic import BaseModel, Field
 
 
-class BaseDTO(BaseModel):
-    ...
+class BaseDTO(BaseModel): ...
 
 
 class BannerContentDTO(BaseDTO):
