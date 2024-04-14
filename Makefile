@@ -5,12 +5,21 @@ env:
 	cp sample.env .env
 
 up:
-	$(dcdev) up --build -d
+	$(dc) up --build -d
 
 downv:
-	$(dcdev) down -v
+	$(dc) down -v
 
 down:
+	$(dc) down
+
+dev-up:
+	$(dcdev) up --build -d
+
+dev-downv:
+	$(dcdev) down -v
+
+dev-down:
 	$(dcdev) down
 
 freeze:
