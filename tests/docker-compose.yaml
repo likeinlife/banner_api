@@ -1,0 +1,71 @@
+x-defaults:
+  api_env: &api_env
+    APP_TITLE: "BannerAPI"
+    APP_VERSION: "0.0.1"
+    APP_DEBUG: "True"
+
+    LOGGING_LEVEL: "INFO"
+    LOGGING_JSON_FORMAT: "False"
+
+    DB_HOST: "postgres"
+    DB_PORT: 5432
+    DB_USER: "postgres"
+    DB_PASSWORD: "postgres"
+    DB_DATABASE: "banner"
+
+    REDIS_HOST: "redis"
+    REDIS_EXPIRE_TIME_IN_SECONDS: "300"
+    REDIS_PORT: 6379
+
+  db_env: &db_env
+    POSTGRES_USER: "postgres"
+    POSTGRES_PASSWORD: "postgres"
+    POSTGRES_DB: "banner"
+
+  test_env: &test_env
+    DOMAIN: "http://banner_api:8000"
+    API_URl: "/api/v1"
+
+services:
+  banner_api:
+    build:
+      context: "../"
+    ports:
+      - "8000:8000"
+    environment:
+      <<: *api_env
+    healthcheck:
+      test: curl -f 127.0.0.1:8000/health || exit 1
+      interval: 3s
+      timeout: 30s
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  tests:
+    build: .
+    environment:
+      <<: *test_env
+    depends_on:
+      banner_api:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      <<: *db_env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "postgres" ]
+      interval: 10s
+      timeout: 60s
+      retries: 5
+      start_period: 5s
+
+  redis:
+    image: redis:latest
+    container_name: redis_cache
+    restart: always
+    ports:
+      - "6379:6379"

@@ -27,3 +27,9 @@ upgrade:
 
 fill-db:
 	$(dcdev) exec -it banner_api python cli.py $(count)
+
+test:
+	${dc} -f tests/docker-compose.yaml up --build --abort-on-container-exit --exit-code-from tests --attach tests
+
+test-down:
+	${dc} -f tests/docker-compose.yaml down -v
