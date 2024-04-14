@@ -32,24 +32,26 @@ def setup_container() -> Container:
 
 def generate_content() -> BannerContentDTO:
     url = "http://" + "".join(random.choices("0123456789abcdefgigklmopqrstuvwxyz", k=8)) + ".com"
-    title = "Title" + "".join(random.choices("0123456789abcdefgigklmopqrstuvwxyz", k=8))
-    text = "Text" + "".join(random.choices("0123456789abcdefgigklmopqrstuvwxyz", k=8))
+    title = "Title " + "".join(random.choices("0123456789abcdefgigklmopqrstuvwxyz", k=8))
+    text = "Text " + "".join(random.choices("0123456789abcdefgigklmopqrstuvwxyz", k=8))
     return BannerContentDTO(title=title, text=text, url=url)
 
 
 @inject
 async def fill_database(count: int, uow: UnitOfWork = Provide[Container.uow]) -> None:
-    for _ in range(count):
-        tag_ids = set(random.choices(range(1, 1000), k=100))
-        feature_id = random.choice(range(1, 100000))
-        is_active = bool(random.randint(0, 1))
-        dto = PutBannerDTO(
-            tag_ids=tag_ids,
-            content=generate_content(),
-            feature_id=feature_id,
-            is_active=is_active,
-        )
-        await uow.banner.insert(dto)
+    async with uow:
+        for _ in range(count):
+            tag_ids = set(random.choices(range(1, 1000), k=100))
+            feature_id = random.choice(range(1, 100000))
+            is_active = bool(random.randint(0, 1))
+            dto = PutBannerDTO(
+                tag_ids=tag_ids,
+                content=generate_content(),
+                feature_id=feature_id,
+                is_active=is_active,
+            )
+            await uow.banner.insert(dto)
+        await uow.commit()
 
 
 async def main():

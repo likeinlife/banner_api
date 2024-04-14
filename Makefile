@@ -24,3 +24,6 @@ revision:
 
 upgrade:
 	$(dcdev) exec -it banner_api alembic upgrade head
+
+fill-db:
+	$(dcdev) exec -it banner_api python cli.py $(count)

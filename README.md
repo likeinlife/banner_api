@@ -6,7 +6,8 @@
 
 1. `make env` - скопировать sample.env в .env
 2. `make up` - запустить сервис (banner_api, postgresql, redis)
-3. `make down` - остановить сервис. `make downv` - остановить сервис и удалить volumes
+3. `make fill-db count=10` - заполнить ДБ случайными значениями
+4. `make down` - остановить сервис. `make downv` - остановить сервис и удалить volumes
 
 # Примечание
 
