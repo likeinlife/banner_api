@@ -4,11 +4,11 @@ delay=1
 while true; do
 
   if [ "$APP_DEBUG" = "True" ]; then
-      dramatiq actors.setup --watch .
       echo "DEBUG MODE"
+      dramatiq actors.setup --watch .
   else
-      dramatiq actors.setup
       echo "RELEASE MODE"
+      dramatiq actors.setup
   fi
   if [ $? -eq 3 ]; then
     echo "Connection error encountered on startup. Retrying in $delay second(s)..."
