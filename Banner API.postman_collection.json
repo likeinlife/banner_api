@@ -391,6 +391,174 @@
 			]
 		},
 		{
+			"name": "Delete Banner by Feature or Tag id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "-1",
+						"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{DOMAIN}}/{{API}}/banner/",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"{{API}}",
+						"banner",
+						""
+					],
+					"query": [
+						{
+							"key": "feature_id",
+							"value": "1",
+							"description": "Идентификатор фичи (опционально)",
+							"disabled": true
+						},
+						{
+							"key": "tag_id",
+							"value": "",
+							"description": "Идентификатор тега (опционально)",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/?feature_id=1",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								""
+							],
+							"query": [
+								{
+									"key": "feature_id",
+									"value": "1",
+									"description": "Идентификатор фичи (опционально)"
+								},
+								{
+									"key": "tag_id",
+									"value": "",
+									"description": "Идентификатор тега (опционально)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 13:59:15 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "0"
+						},
+						{
+							"key": "x-request-id",
+							"value": "ba779e06-56c1-42ce-8b74-495babf6fb70"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "At least one parameter",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								""
+							],
+							"query": [
+								{
+									"key": "feature_id",
+									"value": "1",
+									"description": "Идентификатор фичи (опционально)",
+									"disabled": true
+								},
+								{
+									"key": "tag_id",
+									"value": "",
+									"description": "Идентификатор тега (опционально)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 13:59:42 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "90"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "7504c53c-fa4e-496a-8ea8-ff75d21e41cb"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Необходимо передать хотя бы один параметр\"\n}"
+				}
+			]
+		},
+		{
 			"name": "Create Banner",
 			"request": {
 				"method": "POST",
