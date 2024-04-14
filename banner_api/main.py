@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from api import register_api_routes
 from container import Container
 from core import settings
+from error_handler import register_error_handlers
 from fastapi import FastAPI, Response, status
 from fastapi.responses import ORJSONResponse
 from middlewares import register_middlewares
@@ -28,6 +29,7 @@ app = FastAPI(
 
 register_api_routes(app)
 register_middlewares(app)
+register_error_handlers(app)
 
 
 @app.get(
