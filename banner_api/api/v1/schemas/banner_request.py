@@ -18,3 +18,8 @@ class CreateBannerRequest(CreateBannerSchema): ...
 
 
 class UpdateBannerRequest(UpdateBannerSchema): ...
+
+
+class DeleteQueryBannerListRequest(BaseModel):
+    tag_id: int | None = None
+    feature_id: int | None = None

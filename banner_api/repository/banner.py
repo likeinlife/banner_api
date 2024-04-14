@@ -1,3 +1,5 @@
+import typing as tp
+
 import sqlalchemy as sa
 import structlog
 from db import BannerORM
@@ -147,3 +149,20 @@ class BannerRepository:
             created_at=scalar.created_at,
             updated_at=scalar.updated_at,
         )
+
+    async def delete_by_query(
+        self,
+        feature_id: int | None = None,
+        tag_id: int | None = None,
+    ) -> tp.Sequence[int]:
+        query = sa.delete(BannerORM).returning(BannerORM.id)
+        if feature_id is not None:
+            query = query.where(BannerORM.feature_id == feature_id)
+        if tag_id is not None:
+            query = query.where(BannerORM.tag_ids.contains([tag_id]))
+
+        deleted_id_list = (await self.session.execute(query)).scalars().all()
+
+        for deleted_id in deleted_id_list:
+            self._logger.debug("Banner deleted by query", banner_id=deleted_id)
+        return deleted_id_list

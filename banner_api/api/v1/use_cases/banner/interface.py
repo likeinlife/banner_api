@@ -49,3 +49,10 @@ class IBannerUseCases(abc.ABC):
         self,
         id_: int,
     ) -> BannerDTO: ...
+
+    @abc.abstractmethod
+    async def delete_by_query(
+        self,
+        feature_id: int | None = None,
+        tag_id: int | None = None,
+    ) -> None: ...

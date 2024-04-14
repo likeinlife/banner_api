@@ -14,5 +14,6 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY ./banner_api .
 
 RUN chmod +x ./docker-entrypoint.sh
+RUN chmod +x ./dramatiq-entrypoint.sh
 
 ENTRYPOINT ./docker-entrypoint.sh

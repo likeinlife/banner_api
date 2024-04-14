@@ -98,3 +98,19 @@ async def delete(
 
     await use_case.delete(id_=id_)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.delete(
+    "/",
+    summary="Удаление баннера по фиче или тегу",
+    responses=get_error_responses([es.FORBIDDEN, es.INTERNAL, es.UNAUTHORIZED, es.AT_LEASTH_ONE_PARAMETER_REQUIRED]),
+)
+@inject
+async def delete_query(
+    request: tp.Annotated[schemas.DeleteQueryBannerListRequest, Depends()],
+    role: role_getter_dep,
+) -> Response:
+    use_case = banner_usecase_factory(role)
+
+    await use_case.delete_by_query(feature_id=request.feature_id, tag_id=request.tag_id)
+    return Response(status_code=status.HTTP_200_OK)

@@ -3,6 +3,7 @@ from .banner_request import (
     GetBannerListRequest,
     GetUserBannerRequest,
     UpdateBannerRequest,
+    DeleteQueryBannerListRequest,
 )
 from .banner_response import CreateBannerResponse
 from .banner_schema import BannerContentSchema, BannerSchema

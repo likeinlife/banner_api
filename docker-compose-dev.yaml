@@ -8,8 +8,25 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      redis:
+        condition: service_started
     volumes:
       - ./banner_api:/opt/app
+    networks:
+      - local
+
+  dramatiq:
+    build: .
+    entrypoint: ./dramatiq-entrypoint.sh
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./banner_api:/opt/app
+    networks:
+      - local
 
   postgres:
     image: postgres:13-alpine
@@ -27,13 +44,20 @@ services:
       timeout: 60s
       retries: 5
       start_period: 5s
+    networks:
+      - local
 
   redis:
     image: redis:latest
-    container_name: redis_cache
     restart: always
-    ports:
-      - "6379:6379"
+    expose:
+      - 6379
+    networks:
+      - local
 
 volumes:
   db:
+
+
+networks:
+  local:

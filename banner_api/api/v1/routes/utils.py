@@ -8,6 +8,7 @@ class HttpErrorStatus(Enum):
     FORBIDDEN = (status.HTTP_403_FORBIDDEN, "Пользователь не имеет доступа")
     NOT_FOUND = (status.HTTP_404_NOT_FOUND, "Баннер не найден")
     INTERNAL = (status.HTTP_500_INTERNAL_SERVER_ERROR, "Внутренняя ошибка сервера")
+    AT_LEASTH_ONE_PARAMETER_REQUIRED = (status.HTTP_400_BAD_REQUEST, "Необходимо передать хотя бы один параметр")
 
 
 def _prepare_error(status: int, detail: str) -> dict:

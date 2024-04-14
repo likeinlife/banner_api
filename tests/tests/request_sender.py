@@ -2,8 +2,8 @@ import random
 import typing as tp
 from dataclasses import dataclass
 
-import requests
-from requests.adapters import CaseInsensitiveDict
+import requests  # type: ignore
+from requests.adapters import CaseInsensitiveDict  # type: ignore
 
 
 @dataclass

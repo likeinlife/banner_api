@@ -1,3 +1,4 @@
+from actors.setup import banner_query_delete_worker
 from cache import CacheService
 from dto import BannerContentDTO, BannerDTO
 from dto.banner import PutBannerDTO
@@ -100,3 +101,15 @@ class AdminBannerUseCases(IBannerUseCases):
                 raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Баннер не найден")
             await self.uow.commit()
             return dto
+
+    async def delete_by_query(
+        self,
+        feature_id: int | None = None,
+        tag_id: int | None = None,
+    ) -> None:
+        if feature_id is None and tag_id is None:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Необходимо передать хотя бы один параметр",
+            )
+        banner_query_delete_worker.send(feature_id=feature_id, tag_id=tag_id)

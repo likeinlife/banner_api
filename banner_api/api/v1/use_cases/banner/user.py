@@ -68,3 +68,10 @@ class UserBannerUserCases(IBannerUseCases):
         id_: int,
     ) -> BannerDTO:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Пользователь не имеет доступа")
+
+    async def delete_by_query(
+        self,
+        feature_id: int | None = None,
+        tag_id: int | None = None,
+    ) -> None:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Пользователь не имеет доступа")

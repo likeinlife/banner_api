@@ -1,3 +1,4 @@
+import actors
 import cache
 from core import configure_logging, settings
 from db import create_engine, create_session_maker
@@ -12,6 +13,12 @@ class Container(DeclarativeContainer):
         configure_logging,
         level=settings.logging.level,
         json_format=settings.logging.json_format,
+    )
+
+    dramatiq_configuration: pr.Resource = pr.Resource(
+        actors.configure_dramatiq,
+        settings.cache.host,
+        settings.cache.port,
     )
 
     engine: pr.Singleton = pr.Singleton(create_engine, settings.db.async_url)
