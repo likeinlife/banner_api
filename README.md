@@ -14,6 +14,11 @@
 1. Swagger: http://127.0.0.1:8000/api/openapi
 2. Postman: коллекция в корне проекта `Banner API.postman_collection.json`
 
+# Тестирование
+
+1. `make test` - запустить тесты
+2. `make test-down` - полностью удалить контейнеры с тестами
+
 # Примечание
 
 ## Стек
