@@ -18,7 +18,7 @@ def _add_correlation_processor(_, __, event_dict: EventDict) -> EventDict:
 
 
 def _healthcheck_filter_processor(_, __, event_dict: EventDict) -> EventDict:
-    if event_dict.get("path", "").endswith("/health/"):
+    if "health" in event_dict.get("path", ""):
         raise structlog.DropEvent
     return event_dict
 
