@@ -41,7 +41,7 @@ def generate_content() -> BannerContentDTO:
 async def fill_database(count: int, uow: UnitOfWork = Provide[Container.uow]) -> None:
     async with uow:
         for _ in range(count):
-            tag_ids = set(random.choices(range(1, 1000), k=100))
+            tag_ids = set(random.choices(range(1, 1000), k=10))
             feature_id = random.choice(range(1, 100000))
             is_active = bool(random.randint(0, 1))
             dto = PutBannerDTO(

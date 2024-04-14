@@ -1,0 +1,915 @@
+{
+	"info": {
+		"_postman_id": "f798b248-5715-44a2-b17e-a65eedadd4e2",
+		"name": "Banner API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29246840"
+	},
+	"item": [
+		{
+			"name": "Get User Banner",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "-1",
+						"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{DOMAIN}}/{{API}}/user_banner/?feature_id=&tag_id=&use_last_revision=true",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"{{API}}",
+						"user_banner",
+						""
+					],
+					"query": [
+						{
+							"key": "feature_id",
+							"value": "",
+							"description": "Идентификатор фичи"
+						},
+						{
+							"key": "tag_id",
+							"value": "",
+							"description": "Идентификатор тега"
+						},
+						{
+							"key": "use_last_revision",
+							"value": "true",
+							"description": "Получение информацию напрямую из БД, игнорируя кэшированные данные"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get User Banner",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/user_banner/?feature_id=243&tag_id=518&use_last_revision=true",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"user_banner",
+								""
+							],
+							"query": [
+								{
+									"key": "feature_id",
+									"value": "243",
+									"description": "Идентификатор фичи"
+								},
+								{
+									"key": "tag_id",
+									"value": "518",
+									"description": "Идентификатор тега"
+								},
+								{
+									"key": "use_last_revision",
+									"value": "true",
+									"description": "Получение информацию напрямую из БД, игнорируя кэшированные данные"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:09:27 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "75"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "ae05c381-c837-45a5-b857-8cb9c7c77ae8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"title\": \"Title4pg0sxvq\",\n    \"text\": \"Textrd18csab\",\n    \"url\": \"http://x9z8cbgb.com\"\n}"
+				},
+				{
+					"name": "Not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/user_banner/?feature_id=1&tag_id=1&use_last_revision=true",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"user_banner",
+								""
+							],
+							"query": [
+								{
+									"key": "feature_id",
+									"value": "1",
+									"description": "Идентификатор фичи"
+								},
+								{
+									"key": "tag_id",
+									"value": "1",
+									"description": "Идентификатор тега"
+								},
+								{
+									"key": "use_last_revision",
+									"value": "true",
+									"description": "Получение информацию напрямую из БД, игнорируя кэшированные данные"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:35:31 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "45"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "d86b2fb9-9db0-40aa-bc61-b3fd254409a7"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Баннер не найден\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Banner",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "-1",
+						"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{DOMAIN}}/{{API}}/banner/?limit=10&offset=0",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"{{API}}",
+						"banner",
+						""
+					],
+					"query": [
+						{
+							"key": "feature_id",
+							"value": "",
+							"description": "Идентификатор фичи (опционально)",
+							"disabled": true
+						},
+						{
+							"key": "tag_id",
+							"value": "",
+							"description": "Идентификатор тега (опционально)",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "10",
+							"description": "Ограничение на выдачу записей\n"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "Смещение"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Banner",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/?offset=0&limit=0",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								""
+							],
+							"query": [
+								{
+									"key": "feature_id",
+									"value": "",
+									"description": "Идентификатор фичи (опционально)",
+									"disabled": true
+								},
+								{
+									"key": "tag_id",
+									"value": "518",
+									"description": "Идентификатор тега (опционально)",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Смещение"
+								},
+								{
+									"key": "limit",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:08:38 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "6079"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "658ce963-448b-46b3-8102-5ba0912a11ba"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"banner_id\": 16,\n        \"tag_ids\": [\n            518,\n            534,\n            23,\n            548,\n            36,\n            553,\n            556,\n            45,\n            564,\n            55,\n            568,\n            570,\n            61,\n            580,\n            583,\n            72,\n            587,\n            591,\n            604,\n            606,\n            95,\n            103,\n            104,\n            617,\n            627,\n            640,\n            130,\n            645,\n            648,\n            143,\n            664,\n            667,\n            159,\n            678,\n            167,\n            190,\n            702,\n            704,\n            192,\n            715,\n            210,\n            725,\n            214,\n            218,\n            222,\n            223,\n            227,\n            749,\n            751,\n            253,\n            777,\n            267,\n            268,\n            785,\n            791,\n            299,\n            814,\n            818,\n            312,\n            826,\n            829,\n            832,\n            838,\n            844,\n            859,\n            353,\n            354,\n            358,\n            872,\n            874,\n            364,\n            365,\n            882,\n            887,\n            891,\n            893,\n            896,\n            399,\n            912,\n            920,\n            408,\n            923,\n            412,\n            925,\n            927,\n            947,\n            436,\n            950,\n            439,\n            440,\n            964,\n            459,\n            983,\n            471,\n            475,\n            992,\n            492\n        ],\n        \"feature_id\": 243,\n        \"content\": {\n            \"title\": \"Title4pg0sxvq\",\n            \"text\": \"Textrd18csab\",\n            \"url\": \"http://x9z8cbgb.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 12,\n        \"tag_ids\": [\n            513,\n            2,\n            523,\n            539,\n            557,\n            49,\n            56,\n            587,\n            588,\n            589,\n            78,\n            83,\n            89,\n            605,\n            607,\n            97,\n            615,\n            103,\n            111,\n            626,\n            119,\n            639,\n            641,\n            130,\n            131,\n            136,\n            653,\n            662,\n            666,\n            155,\n            685,\n            174,\n            184,\n            696,\n            187,\n            191,\n            196,\n            199,\n            712,\n            742,\n            237,\n            238,\n            751,\n            752,\n            245,\n            760,\n            765,\n            767,\n            770,\n            262,\n            264,\n            784,\n            786,\n            789,\n            283,\n            284,\n            800,\n            292,\n            807,\n            808,\n            820,\n            825,\n            826,\n            828,\n            842,\n            331,\n            843,\n            347,\n            349,\n            351,\n            352,\n            361,\n            874,\n            879,\n            383,\n            385,\n            400,\n            913,\n            401,\n            404,\n            920,\n            921,\n            948,\n            951,\n            954,\n            445,\n            453,\n            966,\n            463,\n            978,\n            467,\n            479,\n            481\n        ],\n        \"feature_id\": 22893,\n        \"content\": {\n            \"title\": \"Titletq1y8842\",\n            \"text\": \"Textdk5m5eyg\",\n            \"url\": \"http://im6v6qpd.com\"\n        },\n        \"is_active\": true,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 13,\n        \"tag_ids\": [\n            516,\n            11,\n            12,\n            525,\n            526,\n            527,\n            23,\n            537,\n            539,\n            541,\n            555,\n            46,\n            558,\n            570,\n            59,\n            60,\n            585,\n            81,\n            597,\n            603,\n            609,\n            610,\n            616,\n            617,\n            111,\n            116,\n            632,\n            123,\n            646,\n            654,\n            656,\n            151,\n            668,\n            158,\n            671,\n            161,\n            162,\n            675,\n            679,\n            683,\n            174,\n            175,\n            689,\n            696,\n            701,\n            191,\n            705,\n            710,\n            714,\n            210,\n            213,\n            215,\n            219,\n            735,\n            224,\n            740,\n            233,\n            746,\n            235,\n            242,\n            766,\n            772,\n            271,\n            282,\n            794,\n            286,\n            817,\n            311,\n            823,\n            315,\n            834,\n            325,\n            330,\n            842,\n            336,\n            337,\n            860,\n            861,\n            865,\n            366,\n            373,\n            889,\n            380,\n            910,\n            400,\n            915,\n            919,\n            922,\n            429,\n            946,\n            961,\n            451,\n            967,\n            971,\n            973,\n            465,\n            981,\n            477\n        ],\n        \"feature_id\": 13190,\n        \"content\": {\n            \"title\": \"Titledarlv2wi\",\n            \"text\": \"Textw0bo90uu\",\n            \"url\": \"http://wzc7a5vu.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 14,\n        \"tag_ids\": [\n            521,\n            530,\n            531,\n            27,\n            32,\n            545,\n            547,\n            43,\n            52,\n            565,\n            567,\n            64,\n            67,\n            73,\n            75,\n            588,\n            80,\n            81,\n            83,\n            605,\n            94,\n            101,\n            617,\n            630,\n            647,\n            137,\n            650,\n            139,\n            146,\n            150,\n            155,\n            675,\n            676,\n            168,\n            683,\n            685,\n            689,\n            697,\n            187,\n            701,\n            722,\n            212,\n            215,\n            223,\n            743,\n            235,\n            751,\n            250,\n            251,\n            769,\n            781,\n            275,\n            277,\n            296,\n            813,\n            819,\n            836,\n            840,\n            847,\n            849,\n            337,\n            855,\n            348,\n            353,\n            873,\n            874,\n            363,\n            366,\n            896,\n            390,\n            903,\n            905,\n            907,\n            908,\n            913,\n            406,\n            412,\n            930,\n            934,\n            935,\n            433,\n            945,\n            436,\n            952,\n            444,\n            958,\n            447,\n            448,\n            962,\n            973,\n            466,\n            491,\n            510,\n            511\n        ],\n        \"feature_id\": 28691,\n        \"content\": {\n            \"title\": \"Titleelprvuya\",\n            \"text\": \"Textqr61dfeg\",\n            \"url\": \"http://z8e0t269.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 15,\n        \"tag_ids\": [\n            4,\n            525,\n            527,\n            15,\n            30,\n            544,\n            34,\n            44,\n            46,\n            566,\n            573,\n            63,\n            71,\n            585,\n            587,\n            77,\n            591,\n            79,\n            84,\n            99,\n            617,\n            109,\n            127,\n            640,\n            130,\n            653,\n            142,\n            671,\n            683,\n            187,\n            705,\n            707,\n            715,\n            206,\n            724,\n            213,\n            215,\n            223,\n            742,\n            231,\n            237,\n            241,\n            244,\n            759,\n            247,\n            770,\n            786,\n            787,\n            797,\n            288,\n            297,\n            810,\n            303,\n            819,\n            310,\n            311,\n            824,\n            312,\n            822,\n            320,\n            333,\n            846,\n            338,\n            855,\n            346,\n            859,\n            355,\n            357,\n            367,\n            371,\n            887,\n            888,\n            890,\n            381,\n            385,\n            902,\n            394,\n            909,\n            910,\n            408,\n            920,\n            931,\n            933,\n            934,\n            941,\n            431,\n            946,\n            959,\n            963,\n            452,\n            455,\n            971,\n            473,\n            477,\n            494\n        ],\n        \"feature_id\": 40716,\n        \"content\": {\n            \"title\": \"Titlezb1y8dm3\",\n            \"text\": \"Text9ewwftom\",\n            \"url\": \"http://w484xfz1.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 17,\n        \"tag_ids\": [\n            514,\n            20,\n            535,\n            24,\n            537,\n            551,\n            552,\n            50,\n            571,\n            60,\n            582,\n            583,\n            71,\n            75,\n            592,\n            82,\n            601,\n            603,\n            93,\n            611,\n            100,\n            108,\n            110,\n            112,\n            120,\n            633,\n            129,\n            140,\n            672,\n            160,\n            690,\n            178,\n            179,\n            709,\n            200,\n            205,\n            720,\n            212,\n            732,\n            738,\n            234,\n            235,\n            238,\n            240,\n            241,\n            756,\n            757,\n            758,\n            770,\n            269,\n            294,\n            300,\n            301,\n            816,\n            307,\n            823,\n            327,\n            843,\n            331,\n            851,\n            853,\n            856,\n            345,\n            349,\n            865,\n            377,\n            383,\n            898,\n            899,\n            900,\n            903,\n            395,\n            918,\n            408,\n            411,\n            929,\n            418,\n            946,\n            436,\n            948,\n            438,\n            951,\n            450,\n            457,\n            977,\n            981,\n            474,\n            986,\n            989,\n            478,\n            486,\n            489,\n            499,\n            502,\n            504,\n            505\n        ],\n        \"feature_id\": 96916,\n        \"content\": {\n            \"title\": \"Titlettiqczfa\",\n            \"text\": \"Text0i0oixko\",\n            \"url\": \"http://bi3pgbsl.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 18,\n        \"tag_ids\": [\n            512,\n            3,\n            519,\n            527,\n            19,\n            537,\n            540,\n            548,\n            41,\n            42,\n            555,\n            45,\n            561,\n            49,\n            563,\n            571,\n            64,\n            65,\n            67,\n            73,\n            75,\n            593,\n            82,\n            95,\n            615,\n            618,\n            110,\n            627,\n            635,\n            125,\n            134,\n            142,\n            655,\n            143,\n            146,\n            148,\n            662,\n            150,\n            664,\n            156,\n            161,\n            168,\n            170,\n            171,\n            686,\n            688,\n            695,\n            699,\n            711,\n            718,\n            213,\n            214,\n            220,\n            221,\n            742,\n            747,\n            240,\n            246,\n            252,\n            773,\n            778,\n            779,\n            782,\n            785,\n            277,\n            286,\n            290,\n            808,\n            817,\n            306,\n            311,\n            825,\n            324,\n            837,\n            840,\n            849,\n            365,\n            879,\n            368,\n            912,\n            917,\n            918,\n            926,\n            418,\n            933,\n            946,\n            449,\n            967,\n            460,\n            986,\n            998,\n            505,\n            507,\n            508\n        ],\n        \"feature_id\": 89625,\n        \"content\": {\n            \"title\": \"Titleptdp540m\",\n            \"text\": \"Textfv92f9qf\",\n            \"url\": \"http://g02o16p1.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 19,\n        \"tag_ids\": [\n            514,\n            8,\n            9,\n            525,\n            16,\n            17,\n            28,\n            29,\n            543,\n            573,\n            61,\n            576,\n            65,\n            580,\n            72,\n            79,\n            595,\n            596,\n            603,\n            607,\n            102,\n            105,\n            621,\n            626,\n            629,\n            119,\n            124,\n            127,\n            132,\n            133,\n            676,\n            167,\n            683,\n            685,\n            175,\n            176,\n            178,\n            183,\n            184,\n            698,\n            712,\n            713,\n            716,\n            208,\n            730,\n            735,\n            742,\n            234,\n            747,\n            236,\n            237,\n            754,\n            758,\n            253,\n            772,\n            260,\n            273,\n            785,\n            274,\n            789,\n            277,\n            288,\n            817,\n            317,\n            830,\n            322,\n            324,\n            841,\n            343,\n            346,\n            861,\n            350,\n            352,\n            883,\n            374,\n            894,\n            915,\n            404,\n            413,\n            927,\n            939,\n            940,\n            945,\n            441,\n            446,\n            452,\n            460,\n            464,\n            467,\n            480,\n            486,\n            491,\n            495\n        ],\n        \"feature_id\": 75996,\n        \"content\": {\n            \"title\": \"Titletra5zyya\",\n            \"text\": \"Texteo837aaa\",\n            \"url\": \"http://26at42by.com\"\n        },\n        \"is_active\": false,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 20,\n        \"tag_ids\": [\n            28,\n            31,\n            545,\n            554,\n            555,\n            556,\n            52,\n            61,\n            578,\n            589,\n            81,\n            82,\n            597,\n            85,\n            89,\n            97,\n            611,\n            612,\n            616,\n            108,\n            622,\n            111,\n            637,\n            126,\n            125,\n            638,\n            641,\n            133,\n            148,\n            155,\n            163,\n            167,\n            680,\n            169,\n            682,\n            176,\n            186,\n            698,\n            189,\n            190,\n            704,\n            200,\n            209,\n            733,\n            227,\n            231,\n            240,\n            753,\n            754,\n            761,\n            254,\n            767,\n            768,\n            258,\n            771,\n            773,\n            775,\n            785,\n            291,\n            808,\n            811,\n            311,\n            319,\n            321,\n            330,\n            338,\n            852,\n            345,\n            347,\n            861,\n            863,\n            358,\n            370,\n            372,\n            377,\n            380,\n            902,\n            906,\n            401,\n            404,\n            921,\n            411,\n            929,\n            933,\n            423,\n            424,\n            956,\n            462,\n            974,\n            468,\n            473,\n            475,\n            490,\n            491,\n            492,\n            501,\n            511\n        ],\n        \"feature_id\": 91217,\n        \"content\": {\n            \"title\": \"Titlelo3s69ed\",\n            \"text\": \"Textfe7446r3\",\n            \"url\": \"http://gftugr3w.com\"\n        },\n        \"is_active\": true,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    },\n    {\n        \"banner_id\": 21,\n        \"tag_ids\": [\n            518,\n            22,\n            23,\n            29,\n            30,\n            40,\n            565,\n            566,\n            54,\n            569,\n            58,\n            578,\n            580,\n            68,\n            583,\n            73,\n            75,\n            82,\n            83,\n            87,\n            601,\n            90,\n            91,\n            614,\n            615,\n            617,\n            105,\n            108,\n            112,\n            629,\n            636,\n            637,\n            652,\n            155,\n            159,\n            672,\n            163,\n            684,\n            197,\n            711,\n            202,\n            203,\n            718,\n            206,\n            720,\n            226,\n            743,\n            744,\n            749,\n            246,\n            758,\n            252,\n            772,\n            266,\n            268,\n            269,\n            271,\n            798,\n            293,\n            808,\n            317,\n            835,\n            839,\n            330,\n            861,\n            353,\n            865,\n            876,\n            368,\n            369,\n            372,\n            378,\n            894,\n            387,\n            388,\n            389,\n            391,\n            910,\n            400,\n            405,\n            937,\n            425,\n            427,\n            431,\n            437,\n            949,\n            446,\n            959,\n            454,\n            456,\n            969,\n            470,\n            494,\n            495,\n            500\n        ],\n        \"feature_id\": 72639,\n        \"content\": {\n            \"title\": \"Title3sx90g7x\",\n            \"text\": \"Text24icx2ck\",\n            \"url\": \"http://846x7c57.com\"\n        },\n        \"is_active\": true,\n        \"created_at\": \"2024-04-14T07:59:43.381426Z\",\n        \"updated_at\": \"2024-04-14T07:59:43.381426Z\"\n    }\n]"
+				},
+				{
+					"name": "Param error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/?limit=0&offset=0",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								""
+							],
+							"query": [
+								{
+									"key": "feature_id",
+									"value": "",
+									"description": "Идентификатор фичи (опционально)",
+									"disabled": true
+								},
+								{
+									"key": "tag_id",
+									"value": "",
+									"description": "Идентификатор тега (опционально)",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "0",
+									"description": "Ограничение на выдачу записей\n"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Смещение"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:33:36 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "125"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "c203b8b0-6907-4dc7-b964-09296e7357cd"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": [\n        {\n            \"type\": \"greater_than\",\n            \"loc\": [\n                \"query\",\n                \"limit\"\n            ],\n            \"msg\": \"Input should be greater than 1\",\n            \"input\": \"0\",\n            \"ctx\": {\n                \"gt\": 1\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Banner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "-1",
+						"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tag_ids\": [\r\n    0\r\n  ],\r\n  \"feature_id\": 0,\r\n  \"content\": {\r\n    \"title\": \"some_title\",\r\n    \"text\": \"some_text\",\r\n    \"url\": \"some_url\"\r\n  },\r\n  \"is_active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN}}/{{API}}/banner/",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"{{API}}",
+						"banner",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Banner",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tag_ids\": [\r\n    0\r\n  ],\r\n  \"feature_id\": 0,\r\n  \"content\": {\r\n    \"title\": \"some_title\",\r\n    \"text\": \"some_text\",\r\n    \"url\": \"some_url\"\r\n  },\r\n  \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:10:41 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "9"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "31e4b4e5-283e-4ee7-bf71-6a184412860d"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 22\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Banner",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "-1",
+						"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tag_ids\": [\r\n    0\r\n  ],\r\n  \"feature_id\": 0,\r\n  \"content\": {\r\n    \"title\": \"some_title UPDATED\",\r\n    \"text\": \"some_text\",\r\n    \"url\": \"some_url\"\r\n  },\r\n  \"is_active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN}}/{{API}}/banner/{id}",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"{{API}}",
+						"banner",
+						"{id}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Banner",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tag_ids\": [\r\n    0\r\n  ],\r\n  \"feature_id\": 0,\r\n  \"content\": {\r\n    \"title\": \"some_title UPDATED\",\r\n    \"text\": \"some_text\",\r\n    \"url\": \"some_url\"\r\n  },\r\n  \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/12",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								"12"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:14:25 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "0"
+						},
+						{
+							"key": "x-request-id",
+							"value": "3a60d8e9-6afc-41a1-97de-c5be59f328e7"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tag_ids\": [\r\n    0\r\n  ],\r\n  \"feature_id\": 0,\r\n  \"content\": {\r\n    \"title\": \"some_title UPDATED\",\r\n    \"text\": \"some_text\",\r\n    \"url\": \"some_url\"\r\n  },\r\n  \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/{id}",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								"{id}"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:16:36 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "68"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "f721bc7e-656b-4d9c-807b-257f5a4e7845"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Пользователь не имеет доступа\"\n}"
+				},
+				{
+					"name": "Not found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tag_ids\": [\r\n    0\r\n  ],\r\n  \"feature_id\": 0,\r\n  \"content\": {\r\n    \"title\": \"some_title UPDATED\",\r\n    \"text\": \"some_text\",\r\n    \"url\": \"some_url\"\r\n  },\r\n  \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/12",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								"12"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:16:53 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "45"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "6282cf8d-41ab-4442-a8a1-3c33ce55c2e3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Баннер не найден\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Banner",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "-1",
+						"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{DOMAIN}}/{{API}}/banner/12",
+					"host": [
+						"{{DOMAIN}}"
+					],
+					"path": [
+						"{{API}}",
+						"banner",
+						"12"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Banner",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/22",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								"22"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:14:55 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "x-request-id",
+							"value": "d909d062-dc73-4ab8-b45c-cd93ea5965a6"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Not found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "-1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/12",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								"12"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:15:25 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "45"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "c8de650c-3078-4886-9b11-d5902b93d78f"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Баннер не найден\"\n}"
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "1",
+								"description": "Токен пользователя или администратора\nТокен пользователя - положительный, администратора - отрицательный",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN}}/{{API}}/banner/12",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"{{API}}",
+								"banner",
+								"12"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 14 Apr 2024 08:16:02 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "68"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "x-request-id",
+							"value": "2d2deb27-9a43-4e88-8b4e-6c5470df9750"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Пользователь не имеет доступа\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "DOMAIN",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "API",
+			"value": "api/v1",
+			"type": "string"
+		}
+	]
+}

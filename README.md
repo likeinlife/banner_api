@@ -9,6 +9,11 @@
 3. `make fill-db count=10` - заполнить ДБ случайными значениями
 4. `make down` - остановить сервис. `make downv` - остановить сервис и удалить volumes
 
+# Проверка
+
+1. Swagger: http://127.0.0.1:8000/api/openapi
+2. Postman: коллекция в корне проекта `Banner API.postman_collection.json`
+
 # Примечание
 
 ## Стек
